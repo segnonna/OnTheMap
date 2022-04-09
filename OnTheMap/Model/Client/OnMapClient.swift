@@ -12,8 +12,8 @@ class OnMapClient {
     struct Sessions {
         static var sessionId: String = ""
         static var uniqueId: String = ""
-        static let firstName: String = "Yoann"
-        static let lastName: String = "Rodriguez"
+        static var firstName: String = ""
+        static var lastName: String = ""
         static var latitude: Double = 0.0
         static var longitude: Double = 0.0
     }
@@ -24,6 +24,8 @@ class OnMapClient {
         case login
         
         case studentLocation(String?)
+        
+        case userData(String)
         
         
         var stringValue: String {
@@ -36,6 +38,8 @@ class OnMapClient {
               return   Endpoints.base + "StudentLocation" + param!
             }
                 
+            case .userData(let userId): return Endpoints.base + "users/" + userId
+                
             }
             
         }
@@ -47,26 +51,13 @@ class OnMapClient {
     
 
     class func fetchStudentsLocations(completion: @escaping ([StudentsLocationsResponse.StudentLocation], Error?) -> Void){
-        let task = URLSession.shared.dataTask(with: Endpoints.studentLocation("?order=-updatedAt&limmit=100").url) { data, response, error in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion([], error)
-                }
-                return
-            }
-            let decoder = JSONDecoder()
-            do {
-                let responseObject = try decoder.decode(StudentsLocationsResponse.self, from: data)
-                DispatchQueue.main.async {
-                    completion(responseObject.results, nil)
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    completion([], error)
-                }
+        taskForGETRequest(url: Endpoints.studentLocation("?order=-updatedAt&limmit=100").url, stripResponse:false, responseType:StudentsLocationsResponse.self) { response, error in
+            if let response = response {
+                completion(response.results, nil)
+            } else {
+                completion([], error)
             }
         }
-        task.resume()
     }
     
     class func addOrUpdateMyPosition(mediaURL:String, latitude:Double, longitude:Double, mapString:String,  completion: @escaping (Bool, String?) -> Void){
@@ -88,7 +79,18 @@ class OnMapClient {
                 print(response)
                 Sessions.sessionId = response.session.id
                 Sessions.uniqueId = response.account.key
-                completion(true, error?.localizedDescription)
+                
+                print(Endpoints.userData(response.account.key).url)
+                taskForGETRequest(url: Endpoints.userData(response.account.key).url, stripResponse:true, responseType:UserDataResponse.self) { response, error in
+                    if let response = response {
+                        Sessions.firstName = response.firstName
+                        Sessions.lastName = response.lastName
+                        completion(true, nil)
+                    } else {
+                        completion(false, error?.localizedDescription)
+                    }
+                }.resume()
+                
             } else {
                 completion(false, error?.localizedDescription)
             }
@@ -140,6 +142,46 @@ class OnMapClient {
             }
         }
         task.resume()
+    }
+    
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, stripResponse:Bool, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            var newData: Data
+            if stripResponse {
+                let range = 5..<data.count
+                newData = data.subdata(in: range)
+            }else{
+                newData = data
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: newData)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                do {
+                    let errorResponse = try decoder.decode(MapResponse.self, from: newData) as Error
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+        task.resume()
+        
+        return task
     }
     
     class func deleteSession(completion: @escaping (Bool, Error?) -> Void){

@@ -26,6 +26,7 @@
 		B5AAA1022801C8D7004ACEDA /* AddLocationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AAA1012801C8D7004ACEDA /* AddLocationFormViewController.swift */; };
 		B5AAA1042801CA21004ACEDA /* MyCurrentLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AAA1032801CA21004ACEDA /* MyCurrentLocationMapViewController.swift */; };
 		B5AAA1082802143F004ACEDA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AAA1072802143F004ACEDA /* Utilities.swift */; };
+		B5AAA10C280236C8004ACEDA /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AAA10B280236C8004ACEDA /* UserDataResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		B5AAA1012801C8D7004ACEDA /* AddLocationFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationFormViewController.swift; sourceTree = "<group>"; };
 		B5AAA1032801CA21004ACEDA /* MyCurrentLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCurrentLocationMapViewController.swift; sourceTree = "<group>"; };
 		B5AAA1072802143F004ACEDA /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B5AAA10B280236C8004ACEDA /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			children = (
 				B5AAA0F128015072004ACEDA /* LoginRequest.swift */,
 				B5AAA0FD2801BBF5004ACEDA /* MyLocationRequest.swift */,
+				B5AAA10B280236C8004ACEDA /* UserDataResponse.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				B5AAA0FE2801BBF5004ACEDA /* MyLocationRequest.swift in Sources */,
 				B5AAA0F4280157E6004ACEDA /* LoginResponse.swift in Sources */,
 				B5AAA1002801C017004ACEDA /* MyLocationResponse.swift in Sources */,
+				B5AAA10C280236C8004ACEDA /* UserDataResponse.swift in Sources */,
 				B5AAA0FC2801A02C004ACEDA /* StudentsLocationModel.swift in Sources */,
 				B5AAA0EC28014220004ACEDA /* OnMapClient.swift in Sources */,
 			);

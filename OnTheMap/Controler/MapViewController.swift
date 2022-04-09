@@ -24,44 +24,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        OnMapClient.fetchStudentsLocations { locations, error in
-            if !locations.isEmpty {
-                self.showHideMap(isLoading: false)
-                self.erroLabel.isHidden = false
-                var annotations = [MKPointAnnotation]()
-                
-                locations.forEach { studendLocation in
-                    let lat = CLLocationDegrees(studendLocation.latitude)
-                    let long = CLLocationDegrees(studendLocation.longitude)
-                
-                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                    
-                    let first = studendLocation.firstName
-                    let last = studendLocation.lastName
-                    let mediaURL = studendLocation.mediaURL
-                    
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = coordinate
-                    annotation.title = "\(first) \(last)"
-                    annotation.subtitle = mediaURL
-                
-                    
-                    if(!mediaURL.isEmpty && lat != 0.0 && long != 0.0 && !first.isEmpty && !last.isEmpty  ){
-                        annotations.append(annotation)
-                        StudentsLocationsModel.studentsLocations.append(studendLocation)
-                    }
-                
-                }
-
-                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
-                self.mapView.addAnnotations(annotations)
-            } else {
-                self.erroLabel.isHidden = false
-            }
-
-        }
+        loadData()
     }
     
    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -101,7 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func refreshData(_ sender: Any) {
-        viewDidAppear(false)
+        loadData()
     }
     
     @IBAction func addMyLocation(_ sender: Any) {
@@ -117,7 +80,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func showHideMap(isLoading: Bool){
+    private func showHideMap(isLoading: Bool){
         mapView.isHidden = isLoading
         loader.isHidden = !isLoading
         if isLoading {
@@ -125,6 +88,53 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         else {
             loader.stopAnimating()
+        }
+    }
+    
+    private func loadData(){
+        OnMapClient.fetchStudentsLocations { locations, error in
+            if !locations.isEmpty {
+                self.showHideMap(isLoading: false)
+                self.erroLabel.isHidden = false
+                var annotations = [MKPointAnnotation]()
+                
+                StudentsLocationsModel.studentsLocations.removeAll()
+                locations.forEach { studendLocation in
+                    let lat = CLLocationDegrees(studendLocation.latitude)
+                    let long = CLLocationDegrees(studendLocation.longitude)
+                
+                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                    
+                    let first = studendLocation.firstName
+                    let last = studendLocation.lastName
+                    let mediaURL = studendLocation.mediaURL
+                    
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    annotation.title = "\(first) \(last)"
+                    annotation.subtitle = mediaURL
+                
+                    
+                    if(!mediaURL.isEmpty && lat != 0.0 && long != 0.0 && !first.isEmpty && !last.isEmpty  ){
+                        annotations.append(annotation)
+                        StudentsLocationsModel.studentsLocations.append(studendLocation)
+                    }
+                
+                }
+
+                self.mapView.removeAnnotations(self.mapView.annotations)
+                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+                self.mapView.addAnnotations(annotations)
+            } else {
+                self.erroLabel.isHidden = false
+            }
+            
+            if let error = error {
+                let alertVC = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.navigationController?.topViewController?.present(alertVC, animated: true)
+            }
+
         }
     }
     

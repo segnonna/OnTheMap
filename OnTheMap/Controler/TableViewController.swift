@@ -12,10 +12,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return StudentsLocationsModel.studentsLocations.count
     }

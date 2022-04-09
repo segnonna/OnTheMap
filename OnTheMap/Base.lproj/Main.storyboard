@@ -375,6 +375,10 @@
                                     <action selector="closeScreen:" destination="NLW-sf-qU3" eventType="touchUpInside" id="fiS-qL-4qI"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="KEF-8f-aIW">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yEt-jT-Jyp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -391,6 +395,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add location" id="Emj-zS-XOp"/>
                     <connections>
+                        <outlet property="finishButton" destination="c7u-5V-qGH" id="rpr-kU-m54"/>
+                        <outlet property="loader" destination="KEF-8f-aIW" id="ZtS-ab-svE"/>
                         <outlet property="mapView" destination="vQZ-5P-LMG" id="cUR-Kw-omF"/>
                     </connections>
                 </viewController>

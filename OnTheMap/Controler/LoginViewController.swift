@@ -21,20 +21,6 @@ class LoginViewController: UIViewController{
         passwordTextField.text = "P!ssohoged@zPro1"
     }
     
-
-    
-    
-    @IBAction func emailChanged(_ sender: Any) {
-       enableOrDisableButton()
-    }
-    @IBAction func passwordChanged(_ sender: Any) {
-      enableOrDisableButton()
-    }
-    
-    private func enableOrDisableButton() {
-        loginButton.isEnabled = !(emailTextField.text?.isEmpty ?? false) && !(passwordTextField.text?.isEmpty ?? false)
-    }
-    
     @IBAction func loginAction(_ sender: UIButton) {
         setLogIn(true)
         OnMapClient.login(username: emailTextField?.text ?? "", password: passwordTextField?.text ?? "") { data, error in
@@ -50,6 +36,17 @@ class LoginViewController: UIViewController{
                 self.navigationController?.topViewController?.present(alertVC, animated: true)
             }
         }
+    }
+    
+    @IBAction func emailChanged(_ sender: Any) {
+        enableOrDisableButton()
+    }
+    @IBAction func passwordChanged(_ sender: Any) {
+        enableOrDisableButton()
+    }
+    
+    private func enableOrDisableButton() {
+        loginButton.isEnabled = !(emailTextField.text?.isEmpty ?? false) && !(passwordTextField.text?.isEmpty ?? false)
     }
     
     private func setLogIn(_ loggIn: Bool){
