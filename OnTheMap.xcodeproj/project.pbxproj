@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B5AAA0D228013FD0004ACEDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AAA0D128013FD0004ACEDA /* AppDelegate.swift */; };
 		B5AAA0D428013FD0004ACEDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AAA0D328013FD0004ACEDA /* SceneDelegate.swift */; };
-		B5AAA0D628013FD0004ACEDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AAA0D528013FD0004ACEDA /* ViewController.swift */; };
 		B5AAA0D928013FD0004ACEDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AAA0D728013FD0004ACEDA /* Main.storyboard */; };
 		B5AAA0DB28013FD1004ACEDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5AAA0DA28013FD1004ACEDA /* Assets.xcassets */; };
 		B5AAA0DE28013FD1004ACEDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AAA0DC28013FD1004ACEDA /* LaunchScreen.storyboard */; };
@@ -33,7 +32,6 @@
 		B5AAA0CE28013FD0004ACEDA /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AAA0D128013FD0004ACEDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5AAA0D328013FD0004ACEDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B5AAA0D528013FD0004ACEDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5AAA0D828013FD0004ACEDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5AAA0DA28013FD1004ACEDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5AAA0DD28013FD1004ACEDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 				B5AAA0E6280140FE004ACEDA /* Views */,
 				B5AAA0D128013FD0004ACEDA /* AppDelegate.swift */,
 				B5AAA0D328013FD0004ACEDA /* SceneDelegate.swift */,
-				B5AAA0D528013FD0004ACEDA /* ViewController.swift */,
 				B5AAA0D728013FD0004ACEDA /* Main.storyboard */,
 				B5AAA0DA28013FD1004ACEDA /* Assets.xcassets */,
 				B5AAA0DC28013FD1004ACEDA /* LaunchScreen.storyboard */,
@@ -231,7 +228,6 @@
 				B5AAA0EE2801449A004ACEDA /* LoginViewController.swift in Sources */,
 				B5AAA0E928014116004ACEDA /* StudentsLocationsResponse.swift in Sources */,
 				B5AAA1042801CA21004ACEDA /* MyCurrentLocationMapViewController.swift in Sources */,
-				B5AAA0D628013FD0004ACEDA /* ViewController.swift in Sources */,
 				B5AAA0F8280184E6004ACEDA /* MapViewController.swift in Sources */,
 				B5AAA0D228013FD0004ACEDA /* AppDelegate.swift in Sources */,
 				B5AAA1022801C8D7004ACEDA /* AddLocationFormViewController.swift in Sources */,
