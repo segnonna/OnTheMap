@@ -4,6 +4,8 @@
 <dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
+		<false/>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 		<key>UISceneConfigurations</key>
@@ -20,6 +22,12 @@
 				</dict>
 			</array>
 		</dict>
+		
+					<key>NSLocationWhenInUseUsageDescription</key>
+<string>This application requires location services to work</string>
+
+<key>NSLocationAlwaysUsageDescription</key>
+<string>This application requires location services to work</string>
 	</dict>
 </dict>
 </plist>
