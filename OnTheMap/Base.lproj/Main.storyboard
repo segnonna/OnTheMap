@@ -319,13 +319,18 @@
                                     <action selector="findLocation:" destination="woe-CF-s2T" eventType="touchUpInside" id="2Bb-m8-LPU"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="S7B-EJ-YTR">
+                                <rect key="frame" x="197" y="374" width="20" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lal-Cy-JQX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="S7B-EJ-YTR" firstAttribute="centerX" secondItem="O93-5Z-okA" secondAttribute="centerX" id="19M-1S-A3j"/>
                             <constraint firstItem="lal-Cy-JQX" firstAttribute="trailing" secondItem="Xfw-3k-noD" secondAttribute="trailing" constant="87" id="2OF-7x-y4X"/>
                             <constraint firstItem="O93-5Z-okA" firstAttribute="leading" secondItem="lal-Cy-JQX" secondAttribute="leading" constant="20" id="4Nv-eZ-TZU"/>
                             <constraint firstItem="lal-Cy-JQX" firstAttribute="trailing" secondItem="Qkn-yG-Ho8" secondAttribute="trailing" constant="20" id="AhG-4p-3F0"/>
+                            <constraint firstItem="lal-Cy-JQX" firstAttribute="trailing" secondItem="S7B-EJ-YTR" secondAttribute="trailing" constant="197" id="F0L-Tx-1FR"/>
                             <constraint firstItem="lal-Cy-JQX" firstAttribute="trailing" secondItem="tiY-5V-Dbf" secondAttribute="trailing" constant="20" id="GaW-BN-98L"/>
                             <constraint firstItem="lal-Cy-JQX" firstAttribute="trailing" secondItem="O93-5Z-okA" secondAttribute="trailing" constant="20" id="Nvl-z2-pFn"/>
                             <constraint firstItem="tiY-5V-Dbf" firstAttribute="top" secondItem="Qkn-yG-Ho8" secondAttribute="bottom" constant="30" id="TBe-kI-8e8"/>
@@ -333,8 +338,10 @@
                             <constraint firstItem="O93-5Z-okA" firstAttribute="top" secondItem="tiY-5V-Dbf" secondAttribute="bottom" constant="30" id="ZSh-4T-cq1"/>
                             <constraint firstItem="Qkn-yG-Ho8" firstAttribute="top" secondItem="Xfw-3k-noD" secondAttribute="bottom" constant="30" id="Znl-nh-EM7"/>
                             <constraint firstItem="tiY-5V-Dbf" firstAttribute="leading" secondItem="lal-Cy-JQX" secondAttribute="leading" constant="20" id="gaM-YI-XGY"/>
+                            <constraint firstItem="S7B-EJ-YTR" firstAttribute="top" secondItem="O93-5Z-okA" secondAttribute="bottom" constant="30" id="tlX-Mk-xmq"/>
                             <constraint firstItem="Xfw-3k-noD" firstAttribute="top" secondItem="lal-Cy-JQX" secondAttribute="top" id="tsH-gz-2kS"/>
                             <constraint firstItem="Xfw-3k-noD" firstAttribute="leading" secondItem="lal-Cy-JQX" secondAttribute="leading" constant="87" id="wwK-wv-cRS"/>
+                            <constraint firstItem="S7B-EJ-YTR" firstAttribute="leading" secondItem="lal-Cy-JQX" secondAttribute="leading" constant="197" id="ymY-QA-GJB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="Jee-So-H0W" userLabel="Add Location">
@@ -346,6 +353,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addressTextField" destination="Qkn-yG-Ho8" id="IkX-IU-CbB"/>
+                        <outlet property="findButton" destination="O93-5Z-okA" id="gcl-IO-kDy"/>
+                        <outlet property="loader" destination="S7B-EJ-YTR" id="fcZ-nY-go2"/>
                         <outlet property="mediaUrl" destination="tiY-5V-Dbf" id="dqo-gt-XVe"/>
                     </connections>
                 </viewController>
